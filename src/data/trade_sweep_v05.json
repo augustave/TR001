@@ -1,0 +1,61 @@
+{
+  "tradeSweep": {
+    "columns": ["1.00", "0.90", "0.80", "0.70"],
+    "rows": [
+      {
+        "dragScale": "1.00",
+        "cells": [
+          { "count": 0, "peak": "11.252", "status": "blocked" },
+          { "count": 22, "peak": "10.950", "status": "feasible" },
+          { "count": 23, "peak": "10.869", "status": "feasible" },
+          { "count": 25, "peak": "10.869", "status": "feasible" }
+        ],
+        "annotation": {
+          "type": "blocked",
+          "title": "Blocked baseline row",
+          "text": "drag cleanup alone does not clear untouched climb demand",
+          "color": "#ef4444"
+        }
+      },
+      {
+        "dragScale": "0.95",
+        "cells": [
+          { "count": 0, "peak": "11.252", "status": "blocked" },
+          { "count": 25, "peak": "10.947", "status": "feasible" },
+          { "count": 25, "peak": "10.727", "status": "feasible" },
+          { "count": 25, "peak": "10.727", "status": "feasible" }
+        ]
+      },
+      {
+        "dragScale": "0.90",
+        "cells": [
+          { "count": 0, "peak": "11.252", "status": "blocked" },
+          { "count": 25, "peak": "10.947", "status": "feasible" },
+          { "count": 25, "peak": "10.624", "status": "feasible" },
+          { "count": 25, "peak": "10.586", "status": "feasible" }
+        ]
+      },
+      {
+        "dragScale": "0.85",
+        "cells": [
+          { "count": 0, "peak": "11.252", "status": "blocked" },
+          { "count": 31, "peak": "10.947", "status": "feasible" },
+          { "count": 31, "peak": "10.624", "status": "feasible" },
+          { "count": 31, "peak": "10.444", "status": "feasible" }
+        ],
+        "annotation": {
+          "type": "best",
+          "title": "Best tested 11.2 kW cell",
+          "text": "0.85 drag scale + 0.70 climb scale -> 31 feasible candidates",
+          "color": "#eab308"
+        }
+      }
+    ]
+  },
+  "crossSection": [
+    { "fraction": "12 / 16", "kw": "11.2", "status": "blocked", "fillPercentage": 75 },
+    { "fraction": "16 / 16", "kw": "12.0", "status": "feasible", "fillPercentage": 100 },
+    { "fraction": "16 / 16", "kw": "12.5", "status": "feasible", "fillPercentage": 100 },
+    { "fraction": "16 / 16", "kw": "13.0", "status": "feasible", "fillPercentage": 100 }
+  ]
+}
