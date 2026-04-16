@@ -6,3 +6,16 @@ html,
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Animated dashed paths used by Sheet 04 flight/approach arrows */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+.animate-dash {
+  stroke-dasharray: 6, 6;
+  animation: dash-flow 0.8s linear infinite;
+}
+.animate-dash-slow {
+  stroke-dasharray: 8, 8;
+  animation: dash-flow 2s linear infinite;
+}

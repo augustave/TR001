@@ -1,0 +1,68 @@
+{
+  "sortieSchedule": [
+    {
+      "id": "A-01",
+      "blocks": [
+        { "label": "SERVICE", "start": 1, "span": 2, "type": "svc" },
+        { "label": "QUEUE", "start": 3, "span": 1, "type": "que" },
+        { "label": "LAUNCH", "start": 4, "span": 2, "type": "lnc" },
+        { "label": "ON STATION", "start": 6, "span": 7, "type": "sta" }
+      ]
+    },
+    {
+      "id": "B-02",
+      "blocks": [
+        { "label": "HOLD", "start": 1, "span": 3, "type": "hld" },
+        { "label": "RECOVER", "start": 4, "span": 2, "type": "rec" },
+        { "label": "SERVICE", "start": 6, "span": 2, "type": "svc" },
+        { "label": "QUE", "start": 8, "span": 1, "type": "que" },
+        { "label": "LAUNCH", "start": 9, "span": 2, "type": "lnc" },
+        { "label": "STATION", "start": 11, "span": 2, "type": "sta" }
+      ]
+    },
+    {
+      "id": "C-03",
+      "blocks": [
+        { "label": "HOLD", "start": 1, "span": 5, "type": "hld" },
+        { "label": "RECOVER", "start": 6, "span": 2, "type": "rec" },
+        { "label": "SERVICE", "start": 8, "span": 2, "type": "svc" },
+        { "label": "QUE", "start": 10, "span": 1, "type": "que" },
+        { "label": "LAUNCH", "start": 11, "span": 2, "type": "lnc" }
+      ]
+    },
+    {
+      "id": "D-04",
+      "blocks": [
+        { "label": "ON STATION", "start": 1, "span": 2, "type": "sta" },
+        { "label": "RECOVER", "start": 3, "span": 2, "type": "rec" },
+        { "label": "SERVICE", "start": 5, "span": 2, "type": "svc" },
+        { "label": "QUE", "start": 7, "span": 1, "type": "que" },
+        { "label": "LAUNCH", "start": 8, "span": 2, "type": "lnc" },
+        { "label": "ON STATION", "start": 10, "span": 3, "type": "sta" }
+      ]
+    },
+    {
+      "id": "E-05",
+      "blocks": [
+        { "label": "ON STATION", "start": 1, "span": 8, "type": "sta" },
+        { "label": "RECOVER", "start": 9, "span": 2, "type": "rec" },
+        { "label": "SERVICE", "start": 11, "span": 2, "type": "svc" }
+      ]
+    },
+    {
+      "id": "F-06",
+      "blocks": [
+        { "label": "ON STATION", "start": 1, "span": 10, "type": "sta" },
+        { "label": "RECOVER", "start": 11, "span": 2, "type": "rec" }
+      ]
+    }
+  ],
+  "sequenceLegend": [
+    { "n": 1, "text": "WAVE LEAD EXITS FORWARD LAUNCH CORRIDOR" },
+    { "n": 2, "text": "SECOND AIRFRAME HOLDS NOSE-TO-TAIL ON DECK" },
+    { "n": 3, "text": "HOT STAGING CELL LOADS NEXT PACKAGE" },
+    { "n": 4, "text": "SERVICE BAY TURNS A RETURNED VEHICLE" },
+    { "n": 5, "text": "OFF-DECK HOLD STACK WAITS FOR WINDOW" },
+    { "n": 6, "text": "RECOVERY APPROACH ENTERS LOW-TURBULENCE ARC" }
+  ]
+}
