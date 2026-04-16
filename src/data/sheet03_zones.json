@@ -1,0 +1,9 @@
+{
+  "turnaroundLogic": [
+    { "id": 1, "label": "01 // INTAKE BAND" },
+    { "id": 2, "label": "02 // INSPECTION" },
+    { "id": 3, "label": "03 // SERVICE SPINE" },
+    { "id": 4, "label": "04 // READY RACK" },
+    { "id": 5, "label": "05 // LIFT / RELAUNCH" }
+  ]
+}
