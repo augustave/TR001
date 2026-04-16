@@ -136,7 +136,7 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
       {/* HEADER */}
       <header className="border-b-[2px] border-slate-800 p-6 md:p-8">
         <h1 className="text-3xl md:text-4xl tracking-wide text-slate-800 uppercase font-semibold">
-          XBAT SEA CARRIER // SHEET 04
+          TR-001 SEA CARRIER // SHEET 04
         </h1>
         <p className="text-xs md:text-sm tracking-[0.2em] font-bold text-slate-400 mt-2 uppercase">
           Fleet Scenario + Sortie Choreography // Speculative Vector Study
