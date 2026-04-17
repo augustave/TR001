@@ -1,0 +1,18 @@
+{
+  "deckOperations": [
+    { "id": 1, "label": "01 // RECOVERY VECTOR / LOW-TURBULENCE APPROACH" },
+    { "id": 2, "label": "02 // QUICK-TURN SERVICE CELL" },
+    { "id": 3, "label": "03 // HOT STAGING / LAUNCH QUEUE" },
+    { "id": 4, "label": "04 // FORWARD ASSISTED-LAUNCH TRACK" },
+    { "id": 5, "label": "05 // PAYLOAD + FUEL SWAP CORE" },
+    { "id": 6, "label": "06 // RECESSED MAINTENANCE BAY" }
+  ],
+  "turnaroundSteps": [
+    { "num": "01", "title": "RECOVER", "sub": "capture+align" },
+    { "num": "02", "title": "SAFE", "sub": "power-down+check" },
+    { "num": "03", "title": "SERVICE", "sub": "fuel/battery/payload" },
+    { "num": "04", "title": "QUEUE", "sub": "load+comms" },
+    { "num": "05", "title": "LAUNCH", "sub": "track exit" },
+    { "num": "06", "title": "CLEAR", "sub": "reset deck" }
+  ]
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHoverLock } from './hooks/useHoverLock.js';
 import tradeSweepDoc from './data/trade_sweep_v05.json';
+import Sheet02 from './Sheet02.jsx';
 import Sheet03 from './Sheet03.jsx';
 import Sheet04 from './Sheet04.jsx';
 
@@ -478,11 +479,12 @@ const Sheet07 = ({ lockedState, setLockedState }) => {
 
 // --- MAIN DASHBOARD ---
 export default function TR001Dashboard() {
-  const [activeSheet, setActiveSheet] = useState('03');
+  const [activeSheet, setActiveSheet] = useState('02');
   const [lockedPath, setLockedPath] = useState(null);
   const [lockedState, setLockedState] = useState(null);
   const [lockedNode, setLockedNode] = useState(null);
-  const [lockedZone, setLockedZone] = useState(null);
+  const [lockedZone02, setLockedZone02] = useState(null);
+  const [lockedZone03, setLockedZone03] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-100 font-sans p-4 md:p-8 flex flex-col items-center">
@@ -494,6 +496,14 @@ export default function TR001Dashboard() {
           TR-001 Unified Dashboard
         </div>
         <div className="flex text-sm font-bold">
+          <button
+            onClick={() => setActiveSheet('02')}
+            className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
+              ${activeSheet === '02' ? 'bg-slate-100 text-slate-900 border-b-4 border-b-slate-800' : 'bg-white text-slate-400 hover:bg-slate-50 border-b-4 border-b-transparent'}
+            `}
+          >
+            Sheet 02: Deck Ops
+          </button>
           <button
             onClick={() => setActiveSheet('03')}
             className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
@@ -531,8 +541,11 @@ export default function TR001Dashboard() {
 
       {/* RENDER ACTIVE SHEET */}
       <div className="w-full max-w-[1400px] border-[2px] border-slate-800 bg-white transition-all duration-500 shadow-md">
+        {activeSheet === '02' && (
+          <Sheet02 lockedZone={lockedZone02} setLockedZone={setLockedZone02} />
+        )}
         {activeSheet === '03' && (
-          <Sheet03 lockedZone={lockedZone} setLockedZone={setLockedZone} />
+          <Sheet03 lockedZone={lockedZone03} setLockedZone={setLockedZone03} />
         )}
         {activeSheet === '04' && (
           <Sheet04 lockedNode={lockedNode} setLockedNode={setLockedNode} />
