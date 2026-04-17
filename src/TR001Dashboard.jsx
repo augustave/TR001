@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHoverLock } from './hooks/useHoverLock.js';
 import tradeSweepDoc from './data/trade_sweep_v05.json';
+import Sheet01 from './Sheet01.jsx';
 import Sheet02 from './Sheet02.jsx';
 import Sheet03 from './Sheet03.jsx';
 import Sheet04 from './Sheet04.jsx';
@@ -479,10 +480,11 @@ const Sheet07 = ({ lockedState, setLockedState }) => {
 
 // --- MAIN DASHBOARD ---
 export default function TR001Dashboard() {
-  const [activeSheet, setActiveSheet] = useState('02');
+  const [activeSheet, setActiveSheet] = useState('01');
   const [lockedPath, setLockedPath] = useState(null);
   const [lockedState, setLockedState] = useState(null);
   const [lockedNode, setLockedNode] = useState(null);
+  const [lockedZone01, setLockedZone01] = useState(null);
   const [lockedZone02, setLockedZone02] = useState(null);
   const [lockedZone03, setLockedZone03] = useState(null);
 
@@ -496,6 +498,14 @@ export default function TR001Dashboard() {
           TR-001 Unified Dashboard
         </div>
         <div className="flex text-sm font-bold">
+          <button
+            onClick={() => setActiveSheet('01')}
+            className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
+              ${activeSheet === '01' ? 'bg-slate-100 text-slate-900 border-b-4 border-b-slate-800' : 'bg-white text-slate-400 hover:bg-slate-50 border-b-4 border-b-transparent'}
+            `}
+          >
+            Sheet 01: Orthographic
+          </button>
           <button
             onClick={() => setActiveSheet('02')}
             className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
@@ -541,6 +551,9 @@ export default function TR001Dashboard() {
 
       {/* RENDER ACTIVE SHEET */}
       <div className="w-full max-w-[1400px] border-[2px] border-slate-800 bg-white transition-all duration-500 shadow-md">
+        {activeSheet === '01' && (
+          <Sheet01 lockedZone={lockedZone01} setLockedZone={setLockedZone01} />
+        )}
         {activeSheet === '02' && (
           <Sheet02 lockedZone={lockedZone02} setLockedZone={setLockedZone02} />
         )}

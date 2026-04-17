@@ -1,0 +1,14 @@
+{
+  "componentLegend": [
+    { "id": 1, "label": "01 // FORWARD ASSISTED-LAUNCH RAILS" },
+    { "id": 2, "label": "02 // LOW-TURBULENCE RECOVERY DECK" },
+    { "id": 3, "label": "03 // SENSOR / COMMS SPINE" },
+    { "id": 4, "label": "04 // SWAPPABLE FUEL + PAYLOAD CELL" },
+    { "id": 5, "label": "05 // RECESSED MAINTENANCE BAY" }
+  ],
+  "missionLogic": [
+    "A // DESIGNED AS A DRONE TENDER, NOT A MINI CREWED CARRIER",
+    "B // LOW PROFILE REDUCES RADAR / VISUAL SIGNATURE + DECK PITCH",
+    "C // MODULAR BAY SUPPORTS VTOL, ASSISTED-LAUNCH, OR RECOVERY"
+  ]
+}
