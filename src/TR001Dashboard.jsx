@@ -5,6 +5,7 @@ import Sheet01 from './Sheet01.jsx';
 import Sheet02 from './Sheet02.jsx';
 import Sheet03 from './Sheet03.jsx';
 import Sheet04 from './Sheet04.jsx';
+import Sheet05 from './Sheet05.jsx';
 
 const tradeSweepData = tradeSweepDoc.tradeSweep;
 const crossSectionData = tradeSweepDoc.crossSection;
@@ -487,6 +488,7 @@ export default function TR001Dashboard() {
   const [lockedZone01, setLockedZone01] = useState(null);
   const [lockedZone02, setLockedZone02] = useState(null);
   const [lockedZone03, setLockedZone03] = useState(null);
+  const [lockedState05, setLockedState05] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-100 font-sans p-4 md:p-8 flex flex-col items-center">
@@ -531,6 +533,14 @@ export default function TR001Dashboard() {
             Sheet 04: Sortie
           </button>
           <button
+            onClick={() => setActiveSheet('05')}
+            className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
+              ${activeSheet === '05' ? 'bg-slate-100 text-slate-900 border-b-4 border-b-slate-800' : 'bg-white text-slate-400 hover:bg-slate-50 border-b-4 border-b-transparent'}
+            `}
+          >
+            Sheet 05: Doctrine
+          </button>
+          <button
             onClick={() => setActiveSheet('06')}
             className={`px-8 py-4 transition-colors uppercase tracking-widest border-l-[2px] border-slate-800
               ${activeSheet === '06' ? 'bg-slate-100 text-slate-900 border-b-4 border-b-slate-800' : 'bg-white text-slate-400 hover:bg-slate-50 border-b-4 border-b-transparent'}
@@ -562,6 +572,9 @@ export default function TR001Dashboard() {
         )}
         {activeSheet === '04' && (
           <Sheet04 lockedNode={lockedNode} setLockedNode={setLockedNode} />
+        )}
+        {activeSheet === '05' && (
+          <Sheet05 lockedState05={lockedState05} setLockedState05={setLockedState05} />
         )}
         {activeSheet === '06' && (
           <Sheet06 lockedPath={lockedPath} setLockedPath={setLockedPath} />

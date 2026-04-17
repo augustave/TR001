@@ -29,3 +29,79 @@ body {
     linear-gradient(to bottom, rgba(30, 41, 59, 0.05) 1px, transparent 1px);
   background-position: -1px -1px;
 }
+
+/* ---------- Sheet 05: Contested Launch / Recovery Doctrine ---------- */
+/* All class rules below are scoped to the .s05-svg root so they do not
+   collide with global Tailwind / other sheets. */
+.s05-svg .bg { fill: #f3f1ec; }
+.s05-svg .frame { fill: none; stroke: #222222; stroke-width: 1.4; }
+.s05-svg .panel { fill: none; stroke: #222222; stroke-width: 1.2; }
+.s05-svg .panel-title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 1.8px; fill: #222222; }
+.s05-svg .title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 30px; letter-spacing: 2.2px; fill: #222222; }
+.s05-svg .subtitle { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 1.6px; fill: #222222; }
+.s05-svg .meta { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.2px; fill: #222222; }
+.s05-svg .label { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 1px; fill: #222222; }
+.s05-svg .small { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 0.8px; fill: #222222; }
+.s05-svg .card-title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 13px; letter-spacing: 1.2px; fill: #222222; }
+.s05-svg .state-tag { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 1.8px; fill: #8f8a82; }
+.s05-svg .blue { stroke: #2f6da3; fill: none; }
+.s05-svg .blue-fill { fill: #2f6da3; }
+.s05-svg .red { stroke: #bf4a3f; fill: none; }
+.s05-svg .red-fill { fill: #bf4a3f; }
+.s05-svg .amber { stroke: #b9822e; fill: none; }
+.s05-svg .amber-fill { fill: #b9822e; }
+.s05-svg .charcoal { stroke: #222222; fill: none; }
+.s05-svg .light { stroke: #8f8a82; fill: none; }
+.s05-svg .dashed-red { stroke: #bf4a3f; stroke-width: 1.6; stroke-dasharray: 8 6; fill: none; }
+.s05-svg .dashed-blue { stroke: #2f6da3; stroke-width: 1.6; stroke-dasharray: 8 6; fill: none; }
+.s05-svg .guide { stroke: #8f8a82; stroke-width: 0.8; stroke-dasharray: 3 5; fill: none; }
+.s05-svg .primary-stroke { stroke-width: 2.2; }
+.s05-svg .secondary-stroke { stroke-width: 1.4; }
+.s05-svg .arrow-stroke { stroke-width: 1.8; }
+.s05-svg .table-line { stroke: #8f8a82; stroke-width: 0.8; }
+.s05-svg .soft-fill { fill: rgba(0, 0, 0, 0.015); }
+.s05-svg .blue-soft { fill: rgba(47, 109, 163, 0.05); stroke: #2f6da3; stroke-width: 1.2; }
+.s05-svg .red-soft { fill: rgba(191, 74, 63, 0.05); stroke: #bf4a3f; stroke-width: 1.2; }
+.s05-svg .amber-soft { fill: rgba(185, 130, 46, 0.05); stroke: #b9822e; stroke-width: 1.2; }
+.s05-svg .priority-badge { fill: none; stroke: #222222; stroke-width: 1; rx: 3; ry: 3; }
+.s05-svg .node { fill: #f3f1ec; stroke: #222222; stroke-width: 1.4; }
+.s05-svg .uav { fill: none; stroke: #222222; stroke-width: 1.4; }
+.s05-svg .muted { fill: #8f8a82; }
+
+/* State-driven cross-highlighting. Root SVG receives data-active-state="A|B|C|D"
+   when the user hovers or locks a state card. Matching elements stay at full
+   opacity; non-matching state cards, priority rows, and transition nodes dim. */
+.s05-svg .state-card,
+.s05-svg .priorities-row,
+.s05-svg .transition-node {
+  transition: opacity 0.25s ease;
+}
+.s05-svg .state-card-hit { cursor: pointer; outline: none; }
+.s05-svg .state-card-hit:focus-visible .state-frame {
+  stroke: #2f6da3;
+  stroke-width: 2.4;
+}
+
+.s05-svg[data-active-state] .state-card { opacity: 0.35; }
+.s05-svg[data-active-state="A"] .state-card[data-state="A"] { opacity: 1; }
+.s05-svg[data-active-state="B"] .state-card[data-state="B"] { opacity: 1; }
+.s05-svg[data-active-state="C"] .state-card[data-state="C"] { opacity: 1; }
+.s05-svg[data-active-state="D"] .state-card[data-state="D"] { opacity: 1; }
+
+.s05-svg[data-active-state] .priorities-row { opacity: 0.35; }
+.s05-svg[data-active-state="A"] .priorities-row[data-state="A"] { opacity: 1; }
+.s05-svg[data-active-state="B"] .priorities-row[data-state="B"] { opacity: 1; }
+.s05-svg[data-active-state="C"] .priorities-row[data-state="C"] { opacity: 1; }
+.s05-svg[data-active-state="D"] .priorities-row[data-state="D"] { opacity: 1; }
+
+.s05-svg[data-active-state] .transition-node { opacity: 0.4; }
+.s05-svg[data-active-state="A"] .transition-node[data-state="A"] { opacity: 1; }
+.s05-svg[data-active-state="B"] .transition-node[data-state="B"] { opacity: 1; }
+.s05-svg[data-active-state="C"] .transition-node[data-state="C"] { opacity: 1; }
+.s05-svg[data-active-state="D"] .transition-node[data-state="D"] { opacity: 1; }
+
+/* Locked state card gets a ring so the user can tell hover vs click-to-lock. */
+.s05-svg .state-card[data-locked="true"] .state-frame {
+  stroke: #2f6da3;
+  stroke-width: 2.4;
+}
