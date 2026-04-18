@@ -30,97 +30,296 @@ body {
   background-position: -1px -1px;
 }
 
-/* ---------- Sheet 05: Contested Launch / Recovery Doctrine ---------- */
-/* All class rules below are scoped to the .s05-svg root so they do not
-   collide with global Tailwind / other sheets. */
-.s05-svg .bg { fill: #f3f1ec; }
-.s05-svg .frame { fill: none; stroke: #222222; stroke-width: 1.4; }
-.s05-svg .panel { fill: none; stroke: #222222; stroke-width: 1.2; }
-.s05-svg .panel-title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 1.8px; fill: #222222; }
-.s05-svg .title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 30px; letter-spacing: 2.2px; fill: #222222; }
-.s05-svg .subtitle { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 1.6px; fill: #222222; }
-.s05-svg .meta { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.2px; fill: #222222; }
-.s05-svg .label { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 1px; fill: #222222; }
-.s05-svg .small { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 0.8px; fill: #222222; }
-.s05-svg .card-title { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 13px; letter-spacing: 1.2px; fill: #222222; }
-.s05-svg .state-tag { font-family: Inter, Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 1.8px; fill: #8f8a82; }
-.s05-svg .blue { stroke: #2f6da3; fill: none; }
-.s05-svg .blue-fill { fill: #2f6da3; }
-.s05-svg .red { stroke: #bf4a3f; fill: none; }
-.s05-svg .red-fill { fill: #bf4a3f; }
-.s05-svg .amber { stroke: #b9822e; fill: none; }
-.s05-svg .amber-fill { fill: #b9822e; }
-.s05-svg .charcoal { stroke: #222222; fill: none; }
-.s05-svg .light { stroke: #8f8a82; fill: none; }
-.s05-svg .dashed-red { stroke: #bf4a3f; stroke-width: 1.6; stroke-dasharray: 8 6; fill: none; }
-.s05-svg .dashed-blue { stroke: #2f6da3; stroke-width: 1.6; stroke-dasharray: 8 6; fill: none; }
-.s05-svg .guide { stroke: #8f8a82; stroke-width: 0.8; stroke-dasharray: 3 5; fill: none; }
-.s05-svg .primary-stroke { stroke-width: 2.2; }
-.s05-svg .secondary-stroke { stroke-width: 1.4; }
-.s05-svg .arrow-stroke { stroke-width: 1.8; }
-.s05-svg .table-line { stroke: #8f8a82; stroke-width: 0.8; }
-.s05-svg .soft-fill { fill: rgba(0, 0, 0, 0.015); }
-.s05-svg .blue-soft { fill: rgba(47, 109, 163, 0.05); stroke: #2f6da3; stroke-width: 1.2; }
-.s05-svg .red-soft { fill: rgba(191, 74, 63, 0.05); stroke: #bf4a3f; stroke-width: 1.2; }
-.s05-svg .amber-soft { fill: rgba(185, 130, 46, 0.05); stroke: #b9822e; stroke-width: 1.2; }
-.s05-svg .priority-badge { fill: none; stroke: #222222; stroke-width: 1; rx: 3; ry: 3; }
-.s05-svg .node { fill: #f3f1ec; stroke: #222222; stroke-width: 1.4; }
-.s05-svg .uav { fill: none; stroke: #222222; stroke-width: 1.4; }
-.s05-svg .muted { fill: #8f8a82; }
+/* ============================================================
+   Sheet 05 — Procedural Doctrine Architecture
+   "Tactical Schematics" — authoritative, procedural, high-density.
+   Every module locked inside a strictly measured, 1px-bordered grid.
+   ============================================================ */
+.sheet05-doctrine {
+  --doctrine-bone: #F4F4EE;
+  --terminal-ink: #1A1A1A;
+  --link-blue: #2B5E9D;
+  --surge-orange: #D97B29;
+  --degraded-red: #C0392B;
+  --radar-green: #5CDB5C;
+  --s05-font-ui: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --s05-font-mono: 'Space Mono', 'Courier New', monospace;
 
-/* State-driven cross-highlighting. Root SVG receives data-active-state="A|B|C|D"
-   when the user hovers or locks a state card. Matching elements stay at full
-   opacity; non-matching state cards, priority rows, and transition nodes dim. */
-.s05-svg .state-card,
-.s05-svg .priorities-row,
-.s05-svg .transition-node {
-  transition: opacity 0.25s ease;
-}
-.s05-svg .state-card-hit { cursor: pointer; outline: none; }
-.s05-svg .state-card-hit:focus-visible .state-frame {
-  stroke: #2f6da3;
-  stroke-width: 2.4;
+  background-color: var(--doctrine-bone);
+  color: var(--terminal-ink);
+  font-family: var(--s05-font-ui);
+  padding: 28px 32px 40px;
+  width: 100%;
 }
 
-.s05-svg[data-active-state] .state-card { opacity: 0.35; }
-.s05-svg[data-active-state="A"] .state-card[data-state="A"] { opacity: 1; }
-.s05-svg[data-active-state="B"] .state-card[data-state="B"] { opacity: 1; }
-.s05-svg[data-active-state="C"] .state-card[data-state="C"] { opacity: 1; }
-.s05-svg[data-active-state="D"] .state-card[data-state="D"] { opacity: 1; }
+.sheet05-doctrine .s05-sheet-header {
+  margin-bottom: 18px;
+}
+.sheet05-doctrine .s05-sheet-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.sheet05-doctrine .s05-sheet-subtitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.sheet05-doctrine .s05-sheet-hint {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  font-family: var(--s05-font-mono);
+}
 
-.s05-svg[data-active-state] .priorities-row { opacity: 0.35; }
-.s05-svg[data-active-state="A"] .priorities-row[data-state="A"] { opacity: 1; }
-.s05-svg[data-active-state="B"] .priorities-row[data-state="B"] { opacity: 1; }
-.s05-svg[data-active-state="C"] .priorities-row[data-state="C"] { opacity: 1; }
-.s05-svg[data-active-state="D"] .priorities-row[data-state="D"] { opacity: 1; }
+/* The strict 1px grid: dark background shows through 1px gaps between children. */
+.sheet05-doctrine .s05-matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px;
+  background-color: var(--terminal-ink);
+  border: 1px solid var(--terminal-ink);
+}
 
-.s05-svg[data-active-state] .transition-node { opacity: 0.4; }
-.s05-svg[data-active-state="A"] .transition-node[data-state="A"] { opacity: 1; }
-.s05-svg[data-active-state="B"] .transition-node[data-state="B"] { opacity: 1; }
-.s05-svg[data-active-state="C"] .transition-node[data-state="C"] { opacity: 1; }
-.s05-svg[data-active-state="D"] .transition-node[data-state="D"] { opacity: 1; }
+.sheet05-doctrine .s05-cell {
+  background-color: var(--doctrine-bone);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 190px;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+.sheet05-doctrine .s05-cell:focus-visible {
+  outline: 2px solid var(--link-blue);
+  outline-offset: -3px;
+}
 
-/* Hover state (not yet locked) gets a subtle blue frame.
-   Locked state gets a stronger blue frame plus a soft tint so the user
-   can distinguish "previewing" from "locked" at a glance. */
-.s05-svg[data-active-state="A"] .state-card[data-state="A"] .state-frame,
-.s05-svg[data-active-state="B"] .state-card[data-state="B"] .state-frame,
-.s05-svg[data-active-state="C"] .state-card[data-state="C"] .state-frame,
-.s05-svg[data-active-state="D"] .state-card[data-state="D"] .state-frame {
-  stroke: #2f6da3;
-  stroke-width: 1.8;
+.sheet05-doctrine .s05-cell-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--terminal-ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.35;
+  letter-spacing: 0.6px;
 }
-.s05-svg .state-card[data-locked="true"] .state-frame {
-  stroke: #2f6da3;
-  stroke-width: 3;
-  fill: rgba(47, 109, 163, 0.04);
+.sheet05-doctrine .s05-cell-header .s05-cell-label {
+  display: flex;
+  flex-direction: column;
 }
-.s05-svg .state-card-hit:hover { cursor: pointer; }
-.s05-svg .state-card-hit:focus-visible {
-  outline: none;
+.sheet05-doctrine .s05-cell-header .s05-cell-label-top {
+  font-size: 0.6rem;
+  letter-spacing: 1.2px;
+  color: #666;
+  font-weight: 600;
 }
-.s05-svg .state-card-hit:focus-visible .state-frame {
-  stroke: #2f6da3;
-  stroke-width: 3;
-  stroke-dasharray: 6 4;
+.sheet05-doctrine .s05-cell-header .s05-cell-label-main {
+  font-weight: 700;
+  letter-spacing: 0.9px;
 }
+
+.sheet05-doctrine .s05-cell-body {
+  padding: 14px;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet05-doctrine .s05-tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+}
+.sheet05-doctrine .s05-tech-list li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 2px;
+}
+.sheet05-doctrine .s05-tech-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--terminal-ink);
+}
+
+.sheet05-doctrine .s05-state-badge {
+  display: inline-block;
+  align-self: flex-start;
+  border: 1px solid var(--terminal-ink);
+  padding: 3px 7px;
+  font-size: 0.62rem;
+  font-family: var(--s05-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: auto;
+}
+
+/* Geometry icons that sit at the top-right of state card headers. */
+.sheet05-doctrine .s05-geo-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+.sheet05-doctrine .s05-geo-blue { background: var(--link-blue); }
+.sheet05-doctrine .s05-geo-red {
+  background: var(--degraded-red);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sheet05-doctrine .s05-geo-orange {
+  background: var(--surge-orange);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.sheet05-doctrine .s05-geo-green {
+  background: var(--radar-green);
+  border-radius: 50%;
+}
+
+/* State C: Automata Sweep — monospace terminal block. */
+.sheet05-doctrine .s05-terminal {
+  font-family: var(--s05-font-mono);
+  font-size: 0.62rem;
+  line-height: 1.5;
+  color: var(--radar-green);
+  background: #0A0A0A;
+  padding: 10px 12px;
+  flex-grow: 1;
+  white-space: pre;
+  border: 1px solid var(--terminal-ink);
+}
+
+/* State D: Data Rhythm Metrics — horizontal streams of colored pixels. */
+.sheet05-doctrine .s05-score-stream {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+.sheet05-doctrine .s05-score-px {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+
+/* Plan View full-width cell (spans all 4 columns). */
+.sheet05-doctrine .s05-plan-cell {
+  grid-column: span 4;
+  min-height: auto;
+}
+.sheet05-doctrine .s05-plan-cell .s05-cell-body {
+  padding: 0;
+}
+.sheet05-doctrine .s05-plan-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--doctrine-bone);
+}
+
+/* Plan-view SVG stroke colors. */
+.sheet05-doctrine .s05-plan-svg .path-main {
+  fill: none;
+  stroke: var(--link-blue);
+  stroke-width: 2px;
+}
+.sheet05-doctrine .s05-plan-svg .path-surge {
+  fill: none;
+  stroke: var(--surge-orange);
+  stroke-width: 2px;
+}
+.sheet05-doctrine .s05-plan-svg .path-zone {
+  fill: rgba(43, 94, 157, 0.1);
+  stroke: var(--link-blue);
+  stroke-width: 1px;
+  stroke-dasharray: 4, 4;
+}
+.sheet05-doctrine .s05-plan-svg .hold-circle {
+  fill: none;
+  stroke: var(--degraded-red);
+  stroke-width: 1.5px;
+}
+.sheet05-doctrine .s05-plan-svg .hold-cross {
+  stroke: var(--degraded-red);
+  stroke-width: 1.5px;
+}
+.sheet05-doctrine .s05-plan-svg .surge-marker {
+  fill: var(--surge-orange);
+}
+.sheet05-doctrine .s05-plan-svg .path-telemetry {
+  fill: none;
+  stroke: var(--radar-green);
+  stroke-width: 1.2px;
+  stroke-dasharray: 2, 3;
+}
+.sheet05-doctrine .s05-plan-svg .plan-label {
+  font-family: var(--s05-font-ui);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  fill: var(--terminal-ink);
+}
+.sheet05-doctrine .s05-plan-svg .plan-label-mono {
+  font-family: var(--s05-font-mono);
+  font-size: 9px;
+  fill: var(--terminal-ink);
+}
+.sheet05-doctrine .s05-plan-svg .plan-label-red {
+  font-family: var(--s05-font-ui);
+  font-size: 9px;
+  font-weight: 600;
+  fill: var(--degraded-red);
+}
+
+/* Cross-highlighting driven by data-active-state on the matrix grid root.
+   Matching state cell + matching plan-view layer stay at full opacity;
+   everything else dims. */
+.sheet05-doctrine .s05-matrix-grid[data-active-state] .s05-cell[data-state] {
+  opacity: 0.35;
+}
+.sheet05-doctrine .s05-matrix-grid[data-active-state="A"] .s05-cell[data-state="A"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="B"] .s05-cell[data-state="B"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="C"] .s05-cell[data-state="C"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="D"] .s05-cell[data-state="D"] { opacity: 1; }
+
+/* Locked card gets a soft tint of its own color inside the bone background. */
+.sheet05-doctrine .s05-cell[data-locked="true"][data-state="A"] { background: rgba(43, 94, 157, 0.06); }
+.sheet05-doctrine .s05-cell[data-locked="true"][data-state="B"] { background: rgba(192, 57, 43, 0.05); }
+.sheet05-doctrine .s05-cell[data-locked="true"][data-state="C"] { background: rgba(92, 219, 92, 0.05); }
+.sheet05-doctrine .s05-cell[data-locked="true"][data-state="D"] { background: rgba(217, 123, 41, 0.06); }
+
+/* Plan view cell is never dimmed — it is the shared canvas. */
+.sheet05-doctrine .s05-matrix-grid[data-active-state] .s05-plan-cell { opacity: 1; }
+
+/* Plan-view layer fading: elements not tied to the locked state dim. */
+.sheet05-doctrine .s05-plan-svg [data-layer] { transition: opacity 0.25s ease; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state] .s05-plan-svg [data-layer] { opacity: 0.25; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="A"] .s05-plan-svg [data-layer="A"],
+.sheet05-doctrine .s05-matrix-grid[data-active-state="A"] .s05-plan-svg [data-layer="all"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="B"] .s05-plan-svg [data-layer="B"],
+.sheet05-doctrine .s05-matrix-grid[data-active-state="B"] .s05-plan-svg [data-layer="all"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="C"] .s05-plan-svg [data-layer="C"],
+.sheet05-doctrine .s05-matrix-grid[data-active-state="C"] .s05-plan-svg [data-layer="all"] { opacity: 1; }
+.sheet05-doctrine .s05-matrix-grid[data-active-state="D"] .s05-plan-svg [data-layer="D"],
+.sheet05-doctrine .s05-matrix-grid[data-active-state="D"] .s05-plan-svg [data-layer="all"] { opacity: 1; }
