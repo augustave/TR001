@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHoverLock } from './hooks/useHoverLock.js';
 import sheet01Doc from './data/sheet01_components.json';
+import { DoctrineHeader, DoctrineSectionHeader, DoctrineChip } from './components/Doctrine.jsx';
 
 const componentLegend = sheet01Doc.componentLegend;
 const missionLogic = sheet01Doc.missionLogic;
@@ -11,22 +12,18 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
 
   return (
     <div className="w-full bg-[#F4F4EE] flex flex-col">
-
-      {/* HEADER */}
-      <header className="border-b-[2px] border-[#1A1A1A] p-6 md:p-8 relative z-10 bg-white">
-        <h1 className="text-3xl md:text-4xl tracking-wide text-[#1A1A1A] uppercase font-semibold">
-          TR-001 SEA CARRIER // SHEET 01
-        </h1>
-        <p className="text-xs md:text-sm tracking-[0.2em] font-bold text-slate-400 mt-2 uppercase">
-          Orthographic Vector Study // Drone-First Maritime Node // No Brand Affiliation
-        </p>
-      </header>
+      <DoctrineHeader
+        title="TR-001 Sea Carrier · Sheet 01"
+        subtitle="Orthographic vector study · drone-first maritime node · no brand affiliation"
+        chipLeft="SHEET 01 · ORTHOGRAPHIC"
+        chipRight="REV A · NOT TO SCALE"
+      />
 
       {/* MAIN CANVAS AREA */}
-      <div className="flex flex-col flex-1 cad-grid relative">
+      <div className="flex flex-col flex-1 relative">
 
         {/* TOP HALF: PLAN VIEW & LEGEND */}
-        <div className="flex flex-col lg:flex-row border-b-[2px] border-[#1A1A1A] w-full">
+        <div className="flex flex-col lg:flex-row border-b border-[#1A1A1A] w-full">
 
           {/* PLAN VIEW SVG */}
           <div className="flex-[2] p-8 relative flex flex-col items-center justify-center min-h-[450px]">
@@ -99,14 +96,14 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
               <text x="25" y="200" fontSize="14" fontWeight="bold" fill="#C0392B" textAnchor="middle" letterSpacing="1" transform="rotate(-90 25,200)">B = 52.0</text>
             </svg>
 
-            <div className="absolute bottom-4 bg-white px-4 py-2 border-[2px] border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
+            <div className="absolute bottom-4 bg-white px-4 py-2 border border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
               PLAN VIEW
             </div>
           </div>
 
           {/* LEGEND ARRAY */}
-          <div className="flex-[1] flex flex-col justify-start p-8 relative z-10 border-t-[2px] lg:border-t-0 lg:border-l-[2px] border-[#1A1A1A] bg-white/90 backdrop-blur-sm">
-            <div className="flex flex-col gap-4 text-xs font-semibold text-slate-700 mt-12">
+          <div className="flex-[1] flex flex-col justify-start p-8 relative z-10 border-t lg:border-t-0 lg:border-l border-[#1A1A1A] bg-white/90 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 text-xs font-semibold text-[#2A2A24] mt-12">
               {componentLegend.map(item => (
                 <button
                   type="button"
@@ -118,8 +115,8 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
                   onFocus={handleEnter(item.id)}
                   onBlur={handleLeave}
                   onClick={handleClick(item.id)}
-                  className={`flex items-center gap-3 p-3 border-[2px] transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
-                    ${activeZone === item.id ? 'border-blue-500 shadow-md scale-105 z-10 text-blue-800 ring-2 ring-blue-100' : 'border-transparent hover:border-slate-300 hover:bg-[#F4F4EE]'}`}
+                  className={`flex items-center gap-3 p-3 border transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
+                    ${activeZone === item.id ? 'border-blue-500 shadow-md scale-105 z-10 text-blue-800 ring-2 ring-blue-100' : 'border-transparent hover:border-[#C7C3BC] hover:bg-[#F4F4EE]'}`}
                 >
                   <span className="tracking-widest uppercase">{item.label}</span>
                 </button>
@@ -133,7 +130,7 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
         <div className="flex flex-col lg:flex-row w-full">
 
           {/* PROFILE VIEW (SIDE) */}
-          <div className="flex-[1.5] p-8 border-b-[2px] lg:border-b-0 lg:border-r-[2px] border-[#1A1A1A] relative flex flex-col items-center justify-center min-h-[300px]">
+          <div className="flex-[1.5] p-8 border-b lg:border-b-0 lg:border-r border-[#1A1A1A] relative flex flex-col items-center justify-center min-h-[300px]">
             <svg viewBox="0 0 500 250" className="w-full h-full max-h-[250px] overflow-visible" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <marker id="s01-arrow-red-start-prof" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -169,7 +166,7 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
 
             </svg>
 
-            <div className="absolute bottom-4 bg-white px-4 py-2 border-[2px] border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
+            <div className="absolute bottom-4 bg-white px-4 py-2 border border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
               PROFILE VIEW (SIDE)
             </div>
           </div>
@@ -205,15 +202,15 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
 
               </svg>
 
-              <div className="absolute bottom-4 bg-white px-4 py-2 border-[2px] border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
+              <div className="absolute bottom-4 bg-white px-4 py-2 border border-[#1A1A1A] text-xs font-bold tracking-widest text-[#1A1A1A]">
                 FRONT VIEW
               </div>
             </div>
 
             {/* MISSION LOGIC BOX */}
-            <div className="p-6 md:p-8 bg-white/90 backdrop-blur-sm border-t-[2px] border-[#1A1A1A]">
-              <div className="border-[2px] border-[#1A1A1A] p-6 bg-white">
-                <h4 className="text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-4">Mission Logic</h4>
+            <div className="p-6 md:p-8 bg-white/90 backdrop-blur-sm border-t border-[#1A1A1A]">
+              <div className="border border-[#1A1A1A] p-6 bg-white">
+                <h4 className="text-[10px] font-bold tracking-widest text-[#8F8A82] uppercase mb-4">Mission Logic</h4>
                 <ul className="flex flex-col gap-3 text-xs font-semibold text-[#1A1A1A] tracking-wide leading-relaxed">
                   {missionLogic.map((line, i) => (
                     <li key={i}>{line}</li>
@@ -228,14 +225,14 @@ export default function Sheet01({ lockedZone, setLockedZone }) {
       </div>
 
       {/* FOOTER */}
-      <div className="bg-white p-6 flex justify-start items-end text-[10px] font-bold tracking-widest uppercase relative z-10 border-t-[2px] border-[#1A1A1A]">
+      <div className="bg-white p-6 flex justify-start items-end text-[10px] font-bold tracking-widest uppercase relative z-10 border-t border-[#1A1A1A]">
         <div className="flex flex-col items-start gap-2">
           <div className="flex items-end gap-0" aria-hidden="true">
-            <div className="h-3 border-l-[2px] border-[#1A1A1A]"></div>
-            <div className="w-16 border-b-[2px] border-[#1A1A1A]"></div>
-            <div className="h-3 border-l-[2px] border-[#1A1A1A]"></div>
+            <div className="h-3 border-l border-[#1A1A1A]"></div>
+            <div className="w-16 border-b border-[#1A1A1A]"></div>
+            <div className="h-3 border-l border-[#1A1A1A]"></div>
           </div>
-          <span className="text-slate-500 mt-1">10 UNITS</span>
+          <span className="text-[#6B6660] mt-1">10 UNITS</span>
         </div>
       </div>
 

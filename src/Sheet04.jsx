@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useHoverLock } from './hooks/useHoverLock.js';
 import sortieDoc from './data/sortie_schedule.json';
+import { DoctrineHeader, DoctrineSectionHeader } from './components/Doctrine.jsx';
 
 const sortieScheduleData = sortieDoc.sortieSchedule;
 const sequenceLegend = sortieDoc.sequenceLegend;
 
 // --- SHEET-LOCAL UI COMPONENTS ---
 const SectionHeader = ({ subtitle, title }) => (
-  <div className="p-4 md:p-6 border-b-[2px] border-[#1A1A1A] bg-white">
-    <p className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">{subtitle}</p>
-    <h2 className="text-xl md:text-2xl tracking-wider text-[#1A1A1A] uppercase mt-1 font-semibold">{title}</h2>
-  </div>
+  <DoctrineSectionHeader eyebrow={subtitle} title={title} />
 );
 
 const NodeBadge = ({ num, isActive, isLocked, onMouseEnter, onMouseLeave, onClick }) => (
@@ -23,7 +21,7 @@ const NodeBadge = ({ num, isActive, isLocked, onMouseEnter, onMouseLeave, onClic
     onFocus={onMouseEnter}
     onBlur={onMouseLeave}
     onClick={onClick}
-    className={`absolute w-6 h-6 rounded-full border-[2px] flex items-center justify-center text-[10px] font-bold cursor-pointer transition-all duration-300 z-20 bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
+    className={`absolute w-6 h-6 rounded-full border flex items-center justify-center text-[10px] font-bold cursor-pointer transition-all duration-300 z-20 bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
       ${isActive ? 'scale-125 ring-4 ring-blue-100 text-blue-600 border-blue-600' : 'border-[#1A1A1A] text-[#1A1A1A] hover:scale-110 hover:border-blue-400 hover:text-blue-500'}`}
   >
     {num}
@@ -43,8 +41,8 @@ const SortieTimeline = ({ activeAction, setActiveAction }) => {
       case 'que': return `${base} bg-white border-[#1A1A1A] text-[#1A1A1A] border-dashed ${isActive ? 'ring-2 ring-slate-400' : ''}`;
       case 'lnc': return `${base} bg-blue-50 border-blue-600 text-blue-700 font-bold ${isActive ? 'ring-2 ring-blue-400' : ''}`;
       case 'rec': return `${base} bg-red-50 border-red-500 text-red-700 font-bold ${isActive ? 'ring-2 ring-red-400' : ''}`;
-      case 'sta': return `${base} bg-white border-slate-300 text-slate-500 ${isActive ? 'ring-2 ring-slate-300' : ''}`;
-      case 'hld': return `${base} bg-[#F4F4EE] border-slate-400 text-slate-500 border-dotted ${isActive ? 'ring-2 ring-slate-300' : ''}`;
+      case 'sta': return `${base} bg-white border-[#C7C3BC] text-[#6B6660] ${isActive ? 'ring-2 ring-slate-300' : ''}`;
+      case 'hld': return `${base} bg-[#F4F4EE] border-[#B0ADA6] text-[#6B6660] border-dotted ${isActive ? 'ring-2 ring-slate-300' : ''}`;
       default: return `${base} bg-white border-[#1A1A1A]`;
     }
   };
@@ -52,10 +50,10 @@ const SortieTimeline = ({ activeAction, setActiveAction }) => {
   return (
     <div className="w-full overflow-x-auto p-6 bg-white">
       <div className="min-w-[800px]">
-        <div className="grid grid-cols-[60px_repeat(12,1fr)] gap-0 border-b-[2px] border-[#1A1A1A] pb-2 mb-4">
+        <div className="grid grid-cols-[60px_repeat(12,1fr)] gap-0 border-b border-[#1A1A1A] pb-2 mb-4">
           <div></div>
           {columns.map(col => (
-            <div key={col} className="text-[10px] font-bold text-slate-400 text-center border-l-[1px] border-slate-200">{col}</div>
+            <div key={col} className="text-[10px] font-bold text-[#8F8A82] text-center border-l-[1px] border-[#D5D2CC]">{col}</div>
           ))}
         </div>
 
@@ -63,7 +61,7 @@ const SortieTimeline = ({ activeAction, setActiveAction }) => {
           <div key={row.id} className="grid grid-cols-[60px_repeat(12,1fr)] gap-0 mb-3 relative h-8 items-center group">
             <div className="absolute inset-0 grid grid-cols-[60px_repeat(12,1fr)] pointer-events-none z-0" aria-hidden="true">
                <div></div>
-               {columns.map((_, i) => <div key={i} className="border-l-[1px] border-slate-100 h-full"></div>)}
+               {columns.map((_, i) => <div key={i} className="border-l-[1px] border-[#E6E4DE] h-full"></div>)}
             </div>
             <div className="text-xs font-bold text-[#1A1A1A] z-10">{row.id}</div>
 
@@ -77,7 +75,7 @@ const SortieTimeline = ({ activeAction, setActiveAction }) => {
                   onMouseLeave={() => setActiveAction(null)}
                   onFocus={() => setActiveAction(block.type)}
                   onBlur={() => setActiveAction(null)}
-                  className={`h-full border-[2px] flex items-center justify-center text-[9px] tracking-wider uppercase overflow-hidden whitespace-nowrap px-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[#1A1A1A] ${getStyle(block.type, activeAction === block.type, activeAction !== null)}`}
+                  className={`h-full border flex items-center justify-center text-[9px] tracking-wider uppercase overflow-hidden whitespace-nowrap px-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[#1A1A1A] ${getStyle(block.type, activeAction === block.type, activeAction !== null)}`}
                   style={{ gridColumn: `${block.start} / span ${block.span}` }}
                 >
                   {block.label}
@@ -87,9 +85,9 @@ const SortieTimeline = ({ activeAction, setActiveAction }) => {
           </div>
         ))}
       </div>
-      <div className="mt-4 pt-4 border-t-[2px] border-[#1A1A1A] flex justify-between items-center">
-        <p className="text-[10px] font-bold text-slate-500 uppercase">Logic: No more than 2 deck conflicts at once; windows alternate every 2-4 min.</p>
-        <div className="text-[10px] font-bold text-[#1A1A1A] border-[2px] border-[#1A1A1A] px-3 py-1 bg-white">
+      <div className="mt-4 pt-4 border-t border-[#1A1A1A] flex justify-between items-center">
+        <p className="text-[10px] font-bold text-[#6B6660] uppercase">Logic: No more than 2 deck conflicts at once; windows alternate every 2-4 min.</p>
+        <div className="text-[10px] font-bold text-[#1A1A1A] border border-[#1A1A1A] px-3 py-1 bg-white">
           ACTIVE WAVE DECK = 132.0 UNITS
         </div>
       </div>
@@ -133,21 +131,18 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
 
   return (
     <div className="w-full bg-[#F4F4EE]">
-      {/* HEADER */}
-      <header className="border-b-[2px] border-[#1A1A1A] p-6 md:p-8">
-        <h1 className="text-3xl md:text-4xl tracking-wide text-[#1A1A1A] uppercase font-semibold">
-          TR-001 SEA CARRIER // SHEET 04
-        </h1>
-        <p className="text-xs md:text-sm tracking-[0.2em] font-bold text-slate-400 mt-2 uppercase">
-          Fleet Scenario + Sortie Choreography // Speculative Vector Study
-        </p>
-      </header>
+      <DoctrineHeader
+        title="TR-001 Sea Carrier · Sheet 04"
+        subtitle="Fleet scenario + sortie choreography · speculative vector study"
+        chipLeft="SHEET 04 · SORTIE"
+        chipRight="REV A · NOT TO SCALE"
+      />
 
       {/* TOP SECTION: DIAGRAM & LEGEND */}
-      <div className="flex flex-col xl:flex-row border-b-[2px] border-[#1A1A1A] bg-white">
+      <div className="flex flex-col xl:flex-row border-b border-[#1A1A1A] bg-white">
 
         {/* Left: Carrier Deck Diagram */}
-        <div className="flex-[2] border-b-[2px] xl:border-b-0 xl:border-r-[2px] border-[#1A1A1A] relative min-h-[400px]">
+        <div className="flex-[2] border-b xl:border-b-0 xl:border-r border-[#1A1A1A] relative min-h-[400px]">
           <SectionHeader subtitle="Top-Down Plan" title="Staggered Launch + Recovery Wave" />
 
           <div className="relative w-full max-w-[800px] mx-auto h-[350px] mt-4 flex justify-center items-center">
@@ -217,7 +212,7 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
         {/* Right: Legend Sequence */}
         <div className="flex-1 bg-[#F4F4EE] flex flex-col">
           <SectionHeader subtitle="Sequence Map" title="Deck Operations" />
-          <div className="p-6 md:p-8 flex-1 flex flex-col justify-center gap-4 text-sm font-semibold text-slate-700">
+          <div className="p-6 md:p-8 flex-1 flex flex-col justify-center gap-4 text-sm font-semibold text-[#2A2A24]">
             {sequenceLegend.map(item => (
               <button
                 type="button"
@@ -229,17 +224,17 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
                 onFocus={handleEnter(item.n)}
                 onBlur={handleLeave}
                 onClick={handleClick(item.n)}
-                className={`flex items-center gap-4 p-3 border-[2px] transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
+                className={`flex items-center gap-4 p-3 border transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
                   ${isNodeActive(item.n) ? 'border-blue-500 shadow-md scale-105 z-10 text-blue-800' : 'border-[#1A1A1A] hover:bg-[#EDEDE6] opacity-60 hover:opacity-100'}`}
               >
-                <div className={`w-8 h-8 flex items-center justify-center rounded-full border-[2px] font-bold shrink-0 transition-colors
+                <div className={`w-8 h-8 flex items-center justify-center rounded-full border font-bold shrink-0 transition-colors
                   ${isNodeActive(item.n) ? 'border-blue-500 text-blue-600 bg-blue-50' : 'border-[#1A1A1A] text-[#1A1A1A]'}`} aria-hidden="true">
                   0{item.n}
                 </div>
                 <span className="tracking-wide">{item.text}</span>
               </button>
             ))}
-            <p className="text-[10px] font-bold text-slate-500 mt-4 italic leading-relaxed">
+            <p className="text-[10px] font-bold text-[#6B6660] mt-4 italic leading-relaxed">
               * carrier shown at peak overlap condition: 2 on-deck active / 1 in service / 1 exiting
               <br/>
               * hover to preview, click to lock — or hover the timeline below to trace flow
@@ -249,10 +244,10 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
       </div>
 
       {/* MIDDLE SECTION: RING DIAGRAM & RULES */}
-      <div className="flex flex-col lg:flex-row border-b-[2px] border-[#1A1A1A] bg-white">
+      <div className="flex flex-col lg:flex-row border-b border-[#1A1A1A] bg-white">
 
         {/* Left: Airspace Ring */}
-        <div className="flex-[1] border-b-[2px] lg:border-b-0 lg:border-r-[2px] border-[#1A1A1A]">
+        <div className="flex-[1] border-b lg:border-b-0 lg:border-r border-[#1A1A1A]">
           <SectionHeader subtitle="Approach Management" title="Airspace Ring" />
           <div className="p-6 h-[250px] flex items-center justify-center relative">
             <svg viewBox="0 0 300 200" className="w-full h-full max-w-[400px]" aria-hidden="true">
@@ -282,8 +277,8 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
               <text x="200" y="160" fontSize="9" fontWeight="bold" fill="#64748b" textAnchor="middle">LAUNCH EGRESS</text>
             </svg>
           </div>
-          <div className="bg-[#F4F4EE] border-t-[2px] border-[#1A1A1A] p-3 text-center">
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+          <div className="bg-[#F4F4EE] border-t border-[#1A1A1A] p-3 text-center">
+            <p className="text-[10px] font-bold text-[#6B6660] uppercase tracking-widest">
               Holding stack keeps deck from becoming the timing buffer
             </p>
           </div>
@@ -311,7 +306,7 @@ export default function Sheet04({ lockedNode, setLockedNode }) {
       {/* FOOTER */}
       <div className="bg-[#1A1A1A] text-white p-4 flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
         <span>Off-Deck Hold Geometry // Port / STBD Stack + Recovery Slot</span>
-        <span className="text-slate-400">Note // This sheet shifts the concept from object design to wave management</span>
+        <span className="text-[#8F8A82]">Note // This sheet shifts the concept from object design to wave management</span>
       </div>
     </div>
   );

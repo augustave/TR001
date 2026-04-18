@@ -1,14 +1,12 @@
 import React from 'react';
 import { useHoverLock } from './hooks/useHoverLock.js';
 import sheet03Doc from './data/sheet03_zones.json';
+import { DoctrineHeader, DoctrineSectionHeader } from './components/Doctrine.jsx';
 
 const turnaroundLogic = sheet03Doc.turnaroundLogic;
 
 const SectionHeader = ({ subtitle, title }) => (
-  <div className="p-4 md:p-6 border-b-[2px] border-[#1A1A1A] bg-white z-10 relative">
-    <p className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">{subtitle}</p>
-    <h2 className="text-xl md:text-2xl tracking-wider text-[#1A1A1A] uppercase mt-1 font-semibold">{title}</h2>
-  </div>
+  <DoctrineSectionHeader eyebrow={subtitle} title={title} />
 );
 
 export default function Sheet03({ lockedZone, setLockedZone }) {
@@ -17,25 +15,21 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
 
   return (
     <div className="w-full bg-[#F4F4EE] flex flex-col">
-
-      {/* HEADER */}
-      <header className="border-b-[2px] border-[#1A1A1A] p-6 md:p-8 relative z-10 bg-white">
-        <h1 className="text-3xl md:text-4xl tracking-wide text-[#1A1A1A] uppercase font-semibold">
-          TR-001 SEA CARRIER // SHEET 03
-        </h1>
-        <p className="text-xs md:text-sm tracking-[0.2em] font-bold text-slate-400 mt-2 uppercase">
-          Below-Deck Architecture + Turnaround Logic // Speculative Vector Study
-        </p>
-      </header>
+      <DoctrineHeader
+        title="TR-001 Sea Carrier · Sheet 03"
+        subtitle="Below-deck architecture + turnaround logic · speculative vector study"
+        chipLeft="SHEET 03 · BELOW-DECK"
+        chipRight="REV A · NOT TO SCALE"
+      />
 
       {/* TOP SECTION: LONGITUDINAL CUTAWAY & LEGEND */}
-      <div className="flex flex-col lg:flex-row border-b-[2px] border-[#1A1A1A] bg-white">
+      <div className="flex flex-col lg:flex-row border-b border-[#1A1A1A] bg-white">
 
         {/* Left: Longitudinal Cutaway SVG */}
-        <div className="flex-[3] border-b-[2px] lg:border-b-0 lg:border-r-[2px] border-[#1A1A1A] relative min-h-[400px] flex flex-col">
+        <div className="flex-[3] border-b lg:border-b-0 lg:border-r border-[#1A1A1A] relative min-h-[400px] flex flex-col">
           <SectionHeader subtitle="Below-Deck Flow" title="Longitudinal Cutaway" />
 
-          <div className="relative flex-1 w-full p-8 flex justify-center items-center cad-grid">
+          <div className="relative flex-1 w-full p-8 flex justify-center items-center">
             <svg viewBox="0 0 1000 300" className="w-full h-full max-h-[300px]" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <marker id="s03-arrow-red-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -84,7 +78,7 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
         {/* Right: Legend Sequence */}
         <div className="flex-[1] bg-[#F4F4EE] flex flex-col relative z-10">
           <SectionHeader subtitle="Logic Array" title="Zone Mapping" />
-          <div className="p-6 md:p-8 flex-1 flex flex-col justify-center gap-4 text-sm font-semibold text-slate-700">
+          <div className="p-6 md:p-8 flex-1 flex flex-col justify-center gap-4 text-sm font-semibold text-[#2A2A24]">
             {turnaroundLogic.map(item => (
               <button
                 type="button"
@@ -96,7 +90,7 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
                 onFocus={handleEnter(item.id)}
                 onBlur={handleLeave}
                 onClick={handleClick(item.id)}
-                className={`flex items-center gap-4 p-4 border-[2px] transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
+                className={`flex items-center gap-4 p-4 border transition-all cursor-pointer bg-white text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A1A1A]
                   ${activeZone === item.id ? 'border-blue-500 shadow-md scale-105 z-10 text-blue-800' : 'border-[#1A1A1A] hover:bg-[#EDEDE6] hover:scale-[1.02]'}`}
               >
                 <span className="tracking-widest uppercase">{item.label}</span>
@@ -110,10 +104,10 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
       <div className="flex flex-col lg:flex-row bg-white flex-1">
 
         {/* Bottom Left: Lower Deck Plan */}
-        <div className="flex-[1] border-b-[2px] lg:border-b-0 lg:border-r-[2px] border-[#1A1A1A] flex flex-col min-h-[400px]">
+        <div className="flex-[1] border-b lg:border-b-0 lg:border-r border-[#1A1A1A] flex flex-col min-h-[400px]">
           <SectionHeader subtitle="Storage + Service Cells" title="Lower Deck Plan" />
 
-          <div className="p-8 flex-1 flex justify-center items-center cad-grid">
+          <div className="p-8 flex-1 flex justify-center items-center">
             <svg viewBox="0 0 600 400" className="w-full h-full max-h-[300px]" aria-hidden="true">
               <defs>
                 <marker id="s03-arrow-red-start-plan" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -137,7 +131,7 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
         <div className="flex-[1] flex flex-col min-h-[400px]">
           <SectionHeader subtitle="Lift + Sensor Core" title="Transverse Section" />
 
-          <div className="p-8 flex-1 flex justify-center items-center cad-grid">
+          <div className="p-8 flex-1 flex justify-center items-center">
             <svg viewBox="0 0 600 400" className="w-full h-full max-h-[300px]" aria-hidden="true">
               <defs>
                 <marker id="s03-arrow-red-start-trans" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -158,7 +152,7 @@ export default function Sheet03({ lockedZone, setLockedZone }) {
       </div>
 
       {/* FOOTER */}
-      <div className="bg-[#F4F4EE] border-t-[2px] border-[#1A1A1A] p-6 flex justify-between items-end text-[10px] font-bold tracking-widest uppercase relative z-10">
+      <div className="bg-[#F4F4EE] border-t border-[#1A1A1A] p-6 flex justify-between items-end text-[10px] font-bold tracking-widest uppercase relative z-10">
         <div className="flex flex-col items-start gap-2">
           <span className="text-[#1A1A1A]">20 UNITS</span>
           <div className="w-16 border-t-[3px] border-[#1A1A1A]" aria-hidden="true"></div>
