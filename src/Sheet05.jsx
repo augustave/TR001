@@ -35,15 +35,19 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
     useHoverLock({ locked: lockedState05, setLocked: setLockedState05 });
 
   return (
-    <div className="w-full bg-[#f3f1ec]">
-      <svg
-        viewBox="0 0 1600 1100"
-        className="s05-svg w-full h-auto"
-        data-active-state={activeState || undefined}
-        role="img"
-        aria-labelledby="s05-title s05-desc"
-        preserveAspectRatio="xMidYMid meet"
-      >
+    <div className="w-full bg-white flex flex-col">
+      <div className="relative p-4 md:p-6 bg-[#f3f1ec] border-b-[2px] border-slate-800">
+        <div className="absolute top-4 right-6 md:top-6 md:right-8 text-[10px] text-slate-500 font-semibold tracking-widest uppercase z-20 pointer-events-none">
+          {lockedState05 ? `🔒 State ${lockedState05} locked — click again to unlock` : 'Hover a state card to preview · click to lock'}
+        </div>
+        <svg
+          viewBox="0 0 1600 1100"
+          className="s05-svg w-full h-auto"
+          data-active-state={activeState || undefined}
+          role="img"
+          aria-labelledby="s05-title s05-desc"
+          preserveAspectRatio="xMidYMid meet"
+        >
         <title id="s05-title">TR-001 Sea Carrier — Sheet 05 — Contested Launch / Recovery Doctrine</title>
         <desc id="s05-desc">
           Procedural doctrine sheet showing contested launch and recovery logic across four operating states.
@@ -198,7 +202,6 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
           <path className="charcoal secondary-stroke" d="M 438 480 L 624 480 L 696 536 L 624 592 L 438 592 Z" />
           <rect x="498" y="504" width="104" height="64" className="blue-soft" />
           <use href="#s05-continuity-icon" transform="translate(550,536)" />
-          <text x="490" y="460" className="small">MISSION CONTINUITY CELL</text>
 
           <line x1="90" y1="536" x2="236" y2="536" className="blue arrow-stroke" markerEnd="url(#s05-arrow-blue)" />
           <text x="94" y="514" className="small">APPROACH LANE</text>
@@ -225,8 +228,8 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
           <line x1="762" y1="536" x2="926" y2="536" className="blue arrow-stroke" markerEnd="url(#s05-arrow-blue)" />
           <text x="754" y="514" className="small">RELAY PRIORITY LAUNCH LINE</text>
 
-          <path d="M 894 400 L 894 480 L 816 480" className="dashed-red" />
-          <text x="736" y="392" className="small muted">EXTERNAL NETWORK INSTABILITY</text>
+          <path d="M 894 370 L 894 480 L 816 480" className="dashed-red" />
+          <text x="810" y="362" className="small muted">EXTERNAL NETWORK INSTABILITY</text>
 
           <use href="#s05-uav-top" transform="translate(190,536)" />
           <use href="#s05-uav-top" transform="translate(416,536)" />
@@ -244,11 +247,11 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
           <line x1="454" y1="568" x2="360" y2="616" className="red secondary-stroke" />
           <text x="288" y="626" className="small">LINK-LOSS RECOVERY PRIORITY</text>
 
-          <line x1="294" y1="498" x2="294" y2="450" className="guide" />
-          <text x="248" y="442" className="small">LINKED APPROACH / STANDARD INTAKE</text>
+          <line x1="294" y1="498" x2="294" y2="440" className="guide" />
+          <text x="180" y="432" className="small">LINKED APPROACH / STANDARD INTAKE</text>
 
-          <line x1="626" y1="472" x2="626" y2="430" className="guide" />
-          <text x="566" y="422" className="small">SERVICE DEPTH REDUCED IN SURGE MODE</text>
+          <line x1="626" y1="472" x2="626" y2="400" className="guide" />
+          <text x="560" y="392" className="small">SERVICE DEPTH REDUCED IN SURGE MODE</text>
 
           <line x1="800" y1="586" x2="800" y2="642" className="guide" />
           <text x="742" y="658" className="small">QUEUE COMPRESSES AS STAND-OFF PRESSURE RISES</text>
@@ -256,8 +259,8 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
           <line x1="238" y1="574" x2="238" y2="634" className="guide" />
           <text x="196" y="650" className="small">DECK CLEAR IN &lt; 01 CYCLE</text>
 
-          <line x1="498" y1="504" x2="498" y2="436" className="guide" />
-          <text x="438" y="426" className="small">RELAY SORTIES PRIORITIZED UNDER NETWORK LOSS</text>
+          <line x1="498" y1="504" x2="498" y2="462" className="guide" />
+          <text x="412" y="454" className="small">RELAY SORTIES PRIORITIZED</text>
         </g>
 
         {/* ===== PANEL D: AUTONOMY / HUMAN OVERSIGHT LADDER ===== */}
@@ -299,41 +302,41 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
           <line x1="1086" y1="732" x2="1522" y2="732" className="table-line" />
 
           <text x="1086" y="572" className="small">CONDITION</text>
-          <text x="1196" y="572" className="small">FIRST PRIORITY</text>
-          <text x="1311" y="572" className="small">SECOND PRIORITY</text>
-          <text x="1426" y="572" className="small">SUPPRESS</text>
+          <text x="1230" y="572" className="small">FIRST PRIORITY</text>
+          <text x="1345" y="572" className="small">SECOND PRIORITY</text>
+          <text x="1455" y="572" className="small">SUPPRESS</text>
 
           <g className="priorities-row" data-state="A">
             <rect x="1086" y="586" width="6" height="20" className="blue-fill" />
             <text x="1100" y="600" className="small">NORMAL</text>
-            <text x="1196" y="600" className="small">launch tempo</text>
-            <text x="1311" y="600" className="small">payload turn</text>
-            <text x="1426" y="600" className="small">none</text>
+            <text x="1230" y="600" className="small">launch tempo</text>
+            <text x="1345" y="600" className="small">payload turn</text>
+            <text x="1455" y="600" className="small">none</text>
           </g>
 
           <g className="priorities-row" data-state="B">
             <rect x="1086" y="624" width="6" height="20" className="red-fill" />
             <text x="1100" y="638" className="small">DEGRADED COMMS</text>
-            <text x="1196" y="638" className="small">safe recovery</text>
-            <text x="1311" y="638" className="small">ID confirmation</text>
-            <text x="1426" y="638" className="small">nonessential launch</text>
+            <text x="1230" y="638" className="small">safe recovery</text>
+            <text x="1345" y="638" className="small">ID confirm</text>
+            <text x="1455" y="638" className="small">low-priority</text>
           </g>
 
           <g className="priorities-row" data-state="C">
             <rect x="1086" y="662" width="3" height="20" className="blue-fill" />
             <rect x="1089" y="662" width="3" height="20" className="red-fill" />
-            <text x="1100" y="676" className="small">TELECOM DISRUPTION</text>
-            <text x="1196" y="676" className="small">continuity relay</text>
-            <text x="1311" y="676" className="small">ISR relaunch</text>
-            <text x="1426" y="676" className="small">deep re-role</text>
+            <text x="1100" y="676" className="small">TELECOM DISRUPT</text>
+            <text x="1230" y="676" className="small">continuity relay</text>
+            <text x="1345" y="676" className="small">ISR relaunch</text>
+            <text x="1455" y="676" className="small">deep re-role</text>
           </g>
 
           <g className="priorities-row" data-state="D">
             <rect x="1086" y="700" width="6" height="20" className="amber-fill" />
             <text x="1100" y="714" className="small">SURGE / STAND-OFF</text>
-            <text x="1196" y="714" className="small">deck clearance</text>
-            <text x="1311" y="714" className="small">fast relaunch</text>
-            <text x="1426" y="714" className="small">full maintenance</text>
+            <text x="1230" y="714" className="small">deck clearance</text>
+            <text x="1345" y="714" className="small">fast relaunch</text>
+            <text x="1455" y="714" className="small">full maint.</text>
           </g>
         </g>
 
@@ -395,7 +398,8 @@ export default function Sheet05({ lockedState05, setLockedState05 }) {
 
           <text x="1035" y="1030" className="small">Doctrine study for distributed maritime UAV reset, relay, and relaunch operations under contested conditions.</text>
         </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   );
 }

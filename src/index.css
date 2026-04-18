@@ -100,8 +100,27 @@ body {
 .s05-svg[data-active-state="C"] .transition-node[data-state="C"] { opacity: 1; }
 .s05-svg[data-active-state="D"] .transition-node[data-state="D"] { opacity: 1; }
 
-/* Locked state card gets a ring so the user can tell hover vs click-to-lock. */
+/* Hover state (not yet locked) gets a subtle blue frame.
+   Locked state gets a stronger blue frame plus a soft tint so the user
+   can distinguish "previewing" from "locked" at a glance. */
+.s05-svg[data-active-state="A"] .state-card[data-state="A"] .state-frame,
+.s05-svg[data-active-state="B"] .state-card[data-state="B"] .state-frame,
+.s05-svg[data-active-state="C"] .state-card[data-state="C"] .state-frame,
+.s05-svg[data-active-state="D"] .state-card[data-state="D"] .state-frame {
+  stroke: #2f6da3;
+  stroke-width: 1.8;
+}
 .s05-svg .state-card[data-locked="true"] .state-frame {
   stroke: #2f6da3;
-  stroke-width: 2.4;
+  stroke-width: 3;
+  fill: rgba(47, 109, 163, 0.04);
+}
+.s05-svg .state-card-hit:hover { cursor: pointer; }
+.s05-svg .state-card-hit:focus-visible {
+  outline: none;
+}
+.s05-svg .state-card-hit:focus-visible .state-frame {
+  stroke: #2f6da3;
+  stroke-width: 3;
+  stroke-dasharray: 6 4;
 }
