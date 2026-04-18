@@ -2,9 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===========================================================
+   Procedural Doctrine Architecture — global palette + tokens
+   =========================================================== */
+:root {
+  --doctrine-bone: #F4F4EE;
+  --terminal-ink: #1A1A1A;
+  --link-blue: #2B5E9D;
+  --surge-orange: #D97B29;
+  --degraded-red: #C0392B;
+  --radar-green: #5CDB5C;
+  --font-ui: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+}
+
 html,
 body {
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-ui);
+  background-color: var(--doctrine-bone);
+  color: var(--terminal-ink);
+}
+
+/* Generic mono-labelled chip used in nav / hints */
+.doctrine-chip {
+  font-family: var(--font-mono);
+  letter-spacing: 0.8px;
 }
 
 /* Animated dashed paths used by Sheet 04 flight/approach arrows */
